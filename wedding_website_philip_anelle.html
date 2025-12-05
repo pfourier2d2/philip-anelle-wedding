@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Philip & Anelle — 13 Maart 2026 • Royal Hotel, Riebeek-Kasteel</title>
   <meta name="description" content="Kom vier saam met ons ons troue op 13 Maart 2026 by die Royal Hotel in Riebeek-Kasteel." />
-  <meta name="theme-color" content="#DCCCA3" />
-  <link rel="icon" type="image/png" href="emblem.png" />
-  <link rel="apple-touch-icon" href="emblem.png" />
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap');
@@ -26,71 +23,46 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      color: var(--ink);
       background: var(--cream);
+      color: var(--ink);
       line-height: 1.6;
     }
 
     a { color: var(--olive); text-decoration: none; }
 
-    /* --------------------------
-       SIDE DECORATION (emblem + leaves)
-       -------------------------- */
+    /* SIDE DECORATION (unchanged) */
     .side-decor {
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 130px;
+      width: 140px;
       pointer-events: none;
-      z-index: -1;
       background-repeat: no-repeat, repeat-y;
-      background-position:
-        center 40px,
-        center 180px;
-      background-size:
-        90px 90px,
-        90px auto;
-      opacity: 0.95;
-    }
-    .side-decor.left  { left: 0;  background-image: url('emblem.png'), url('olive-leaves.png'); }
-    .side-decor.right { right: 0; background-image: url('emblem.png'), url('olive-leaves.png'); }
-
-    @media (max-width: 900px) {
-      .side-decor { display: none; }
-    }
-
-    /* --------------------------
-       LAYOUT SHELL
-       -------------------------- */
-    .page-shell {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
+      background-position: center 40px, center 180px;
+      background-size: 90px 90px, 90px auto;
+      opacity: 0.96;
       z-index: 1;
     }
+    .side-decor.left { left: 0; background-image: url('emblem.png'), url('olive-leaves.png'); }
+    .side-decor.right { right: 0; background-image: url('emblem.png'), url('olive-leaves.png'); }
 
-    .container { width: min(900px, 90vw); margin: 0 auto; }
-    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--olive); }
+    @media(max-width: 900px) { .side-decor { display: none; } }
 
-    /* --------------------------
-       NAVIGATION
-       -------------------------- */
+    /* NAVIGATION (centered fix applied) */
     .nav {
       position: sticky;
       top: 0;
-      background: #ffffffd9;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
       z-index: 100;
-      white-space: nowrap;
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(6px);
+      padding: 12px 0;
     }
+
     .nav-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;   /* CENTERED HEADER */
       align-items: center;
-      padding: 14px 4vw;
-      gap: 16px;
-      flex-wrap: nowrap;
+      gap: 80px;
     }
 
     .brand {
@@ -99,373 +71,372 @@
       gap: 12px;
       font-family: 'Playfair Display', serif;
       color: var(--olive);
+      margin-right: 40px;        /* BALANCE CENTERING */
     }
+
     .brand-logo {
       width: 46px;
       height: 46px;
       border-radius: 50%;
       object-fit: contain;
-      background: #fdfbf8;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      display: block;
     }
-    .brand-text {
-      line-height: 1.2;
-      display: flex;
-      flex-direction: column;
+
+    .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .brand-main { font-size: 1.2rem; font-weight: 700; }
+    .brand-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: #777;
+      text-transform: uppercase;
     }
-    .brand-main { font-weight: 700; font-size: 1.2rem; }
-    .brand-sub  { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #777; }
 
     .menu {
       display: flex;
-      gap: 22px;
-      flex-wrap: nowrap;
-      font-size: 0.92rem;
-    }
-    @media (max-width: 750px) {
-      .menu { display: none; }
+      gap: 20px;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
-    .btn {
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: var(--olive);
-      color: white;
-      font-weight: 600;
-      border: none;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-    }
-    .btn.alt { background: var(--gold); color: var(--ink); }
-
-    /* --------------------------
-       HERO
-       -------------------------- */
+    /* HERO (unchanged layout) */
     .hero {
       text-align: center;
       padding: 14vh 0 18vh;
-      background:
-        radial-gradient(circle at top, rgba(183,196,161,0.45), transparent 60%),
-        linear-gradient(to bottom, rgba(249,248,244,1), rgba(249,248,244,0.96));
+      background: radial-gradient(circle at center, rgba(163,177,138,0.25), transparent 70%);
     }
-    .hero img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 20px;
-      opacity: 0.96;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
-    }
-    .title    { font-size: clamp(2.4rem, 6vw, 4.5rem); color: var(--olive); }
-    .subtitle { font-size: clamp(1rem, 2.5vw, 1.3rem); color: #555; }
 
-    /* --------------------------
-       SECTIONS
-       -------------------------- */
-    section { padding: 80px 0; }
+    .hero img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      color: var(--olive);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: var(--shadow);
+    }
+
+    /* --------- MAIN CONTENT BELOW HERO ---------- */
+    .container {
+      width: min(900px, 90vw);
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--olive);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
     .divider {
       height: 2px;
       width: 80px;
       background: var(--gold);
-      margin: 40px auto;
       border-radius: 2px;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px;
-    }
-    footer {
-      padding: 60px 0;
-      text-align: center;
-      color: #777;
+      margin: 40px auto;
     }
 
-    .note { color: #666; font-size: 0.95rem; }
-    .grid { display: grid; gap: 24px; }
-    @media (min-width: 900px) { .cols-2 { grid-template-columns: 1fr 1fr; } }
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+
+    .note {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 900px) {
+      .cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
 
     .qr-box {
       display: flex;
       justify-content: center;
       padding: 20px;
-      background: white;
-      border: 1px dashed var(--border);
       border-radius: 18px;
+      background: #fff;
+      border: 1px dashed var(--border);
       box-shadow: var(--shadow);
     }
 
-    /* --------------------------
-       FILM-STRIP GALLERY
-       -------------------------- */
-    .film-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 28px;
-      margin-top: 24px;
-    }
-    .film-frame {
-      background: #000;
-      padding: 12px;
-      border-radius: 6px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .film-frame::before,
-    .film-frame::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 22px;
-      background-image: linear-gradient(#fff 0 20px, transparent 20px 40px);
-      background-size: 100% 40px;
-      background-repeat: repeat-y;
-      opacity: 0.95;
-    }
-    .film-frame::before { left: 0; }
-    .film-frame::after  { right: 0; }
-
-    .film-frame img {
+    /* Gallery (Google Drive embed wrapper) */
+    .gallery-drive iframe {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 4px;
+      height: 600px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
     }
 
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- Side decoration -->
-  <div class="side-decor left"></div>
-  <div class="side-decor right"></div>
+<!-- SIDE DECORATION -->
+<div class="side-decor left"></div>
+<div class="side-decor right"></div>
 
-  <div class="page-shell">
+<!-- TOP NAVIGATION (centered) -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <img src="emblem.png" class="brand-logo" alt="Embleem">
+      <div class="brand-text">
+        <span class="brand-main">Philip &amp; Anelle</span>
+        <span class="brand-sub">13 MAART 2026 • RIEBEEK-KASTEEL</span>
+      </div>
+    </div>
 
-    <!-- NAV -->
-    <nav class="nav">
-      <div class="nav-inner container">
-        <div class="brand">
-          <img src="emblem.png" class="brand-logo" alt="Embleem">
-          <div class="brand-text">
-            <span class="brand-main">Philip &amp; Anelle</span>
-            <span class="brand-sub">13 Maart 2026 • Riebeek-Kasteel</span>
-          </div>
+    <div class="menu">
+      <a href="#home">Tuis</a>
+      <a href="#story">Ons Liefdesverhaal</a>
+      <a href="#day">Die Dag</a>
+      <a href="#venue">Venue &amp; Reis</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#registry">Geskenke</a>
+      <a href="#gallery">Galery</a>
+      <a href="#faq">Vrae</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<header id="home" class="hero">
+  <img src="emblem.png" alt="Hoof Embleem">
+  <h1 class="title">Philip &amp; Anelle</h1>
+  <p class="subtitle">13 Maart 2026 · Royal Hotel, Riebeek-Kasteel</p>
+  <a class="btn"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSdBApxCocVDQVFtswFmxbV87M5yDCMWVn7PI1nSOUvOWVQzQA/viewform?usp=dialog"
+     target="_blank" rel="noopener">
+    RSVP hier
+  </a>
+</header>
+
+<!-- MAIN CONTENT SECTIONS -->
+
+<div class="divider"></div>
+
+<section id="story">
+  <div class="container card">
+    <h2>Ons Liefdesverhaal</h2>
+    <p>Ons storie begin met ’n eenvoudige “Hallo” op Facebook op 23 November 2021 — ’n boodskap wat, sonder dat ons dit geweet het, die eerste bladsy van iets ongelooflik spesiaals sou wees.</p>
+    <p>Net ’n paar dae later, op 2 Desember 2021, sit ons saam op ons eerste afspraak, en die vonk was daar. Teen 2 Januarie 2022 proe ons saam wyn vir die eerste keer, en van daar af het ons liefde net begin groei.</p>
+    <p>Ons het avonture begin opstapel: Cape Town 10s, skydive saam, uitstappies na Agulhas, en meer herinneringe as wat ons ooit kon tel.</p>
+    <p>Op 7 Mei 2022, by die Robertson-vliegveld, op die runway, vra Philip vir Anelle om sy meisie te wees — ’n oomblik so mooi en uniek soos ons reis self.</p>
+    <p>Sedertdien het ons saam ontdek, saam gelag en saam geleef: wynproe, toere deur ons land en na Italië, musiekkonserte, sportbyeenkomste en selfs ’n paar seer herinneringe soos ’n gebrekte arm en rug — maar altyd hand aan hand, altyd saam.</p>
+    <p>Toe, op 20 September, vra Philip die groot JA-woord, en Anelle se antwoord was ’n vaste, liefdevolle “JA”.</p>
+    <p>Nou kyk ons vorentoe na 13 Maart 2026 — die dag waarop ons “vir altyd” begin. Ons kan nie wag om hierdie nuwe hoofstuk saam met ons familie en vriende te vier nie.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="day">
+  <div class="container card">
+    <h2>Die Dag</h2>
+    <ul>
+      <li>15:30 – Gaste arriveer &amp; voor-drankies</li>
+      <li>16:00 – Seremonie by Riebeek Kasteel NGK</li>
+      <li>16:45 – Canapés &amp; foto's</li>
+      <li>18:45 – Onthaal begin</li>
+      <li>23:00 – Laaste dans</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="venue">
+  <div class="container card">
+    <h2>Venue &amp; Reis</h2>
+    <p><strong>Venue:</strong> Royal Hotel, Riebeek-Kasteel</p>
+    <p>Parkering is op die perseel beskikbaar.</p>
+    <p>Die onthaal sal by The Royal Hotel in Riebeek Kasteel gehou word. Vir akkommodasie by die Hotel is daar ’n gesubsidieerde tarief beskikbaar vir al ons trougaste.</p>
+    <p>Kontak asseblief Petra by <a href="mailto:info@royalinriebeek.com">info@royalinriebeek.com</a> of ‪+27 22 448 1378‬ om ’n bespreking te maak.</p>
+    <p>Let asseblief daarop dat The Royal Hotel vooraf geblok is vir 13 Maart op alle ander besprekingplatforms om te verseker dat die Hotel se akkommodasie vir ons gaste beskikbaar bly! Daar is egter beperkte kamers beskikbaar by die Hotel.</p>
+    <p>Daar is ook akkommodasie binne stapafstand van die Hotel by die volgende plekke:</p>
+    <p>- Royal Street 1 Gastehuis</p>
+    <p>- La Montagne Lodge</p>
+    <p>- Royal Junction</p>
+    <p>Indien enige hulp benodig word, moenie huiwer om Philip of Anelle te kontak nie.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="rsvp">
+  <div class="container card">
+    <h2>RSVP</h2>
+    <p>Ons vra vriendelik dat jy asseblief voor <strong>21 December 2025</strong> RSVP.</p>
+    <p>Jy kan RSVP deur ons Google-vorm hier oop te maak:</p>
+    <p>
+      <a class="btn"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSdBApxCocVDQVFtswFmxbV87M5yDCMWVn7PI1nSOUvOWVQzQA/viewform?usp=dialog"
+         target="_blank" rel="noopener">
+        Klik hier om te RSVP
+      </a>
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="registry">
+  <div class="container card">
+    <h2>Geskenkregister</h2>
+    <p>Julle teenwoordigheid op ons spesiale dag is die grootste geskenk en as julle ’n paar moves op die dansbaan gooi, nog beter.</p>
+    <ul>
+      <li>As jy ons ’n voorsprong wil gee op die honeymoon-vibes… ’n geldjie sal wonderlik wees!</li>
+      <li>En as jy ’n bydrae wil lewer tot ons toekoms, sal enige donasie aanvaar word.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="photos">
+  <div class="container card">
+    <h2>Foto's</h2>
+    <p class="note">Skandeer die QR-kode om die oplaai-vorm oop te maak, laai jou gunsteling oomblikke op, en blaai later deur die galery.</p>
+
+    <div class="grid cols-2" style="margin-top:20px">
+      <div>
+        <h3>Skandeer die QR</h3>
+        <div class="qr-box" style="margin:12px 0 10px">
+          <img id="qrimg" alt="QR-kode na foto-oplaai vorm" width="240" height="240" />
         </div>
-        <div class="menu">
-          <a href="#home">Tuis</a>
-          <a href="#story">Ons Liefdesverhaal</a>
-          <a href="#day">Die Dag</a>
-          <a href="#venue">Venue &amp; Reis</a>
-          <a href="#rsvp">RSVP</a>
-          <a href="#registry">Geskenke</a>
-          <a href="#photos">Foto's</a>
-          <a href="#gallery">Galery</a>
-          <a href="#faq">Vrae</a>
-        </div>
+        <p class="note">
+          As die QR nie wil werk nie, gebruik hierdie skakel:
+          <a id="uploadLink" href="#upload">oplaai-skakel</a>
+        </p>
       </div>
-    </nav>
-
-    <!-- HERO -->
-    <header id="home" class="hero">
-      <div class="container">
-        <img src="emblem.png" alt="Philip &amp; Anelle embleem">
-        <h1 class="title">Philip &amp; Anelle</h1>
-        <p class="subtitle">13 Maart 2026 · Royal Hotel, Riebeek-Kasteel</p>
-        <a class="btn alt" href="#rsvp">RSVP hier</a>
+      <div>
+        <h3>Hoe dit werk</h3>
+        <ol class="note" style="line-height:1.9">
+          <li>Maak die oplaai-vorm oop (QR of skakel).</li>
+          <li>Laai jou foto's op of neem ’n foto met jou foon.</li>
+          <li>Klik stuur. Dis dit!</li>
+        </ol>
+        <p class="note">Wenk: Probeer om vae / duplikaat foto's te vermy. Venue Wi-Fi kan stadig wees, so kleiner oplaai is beter.</p>
       </div>
-    </header>
+    </div>
+  </div>
+</section>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    <!-- STORY -->
-    <section id="story">
-      <div class="container card">
-        <h2>Ons Liefdesverhaal</h2>
-        <p>Ons storie begin met ’n eenvoudige “Hallo” op Facebook op 23 November 2021 — ’n boodskap wat, sonder dat ons dit geweet het, die eerste bladsy van iets ongelooflik spesiaals sou wees.</p>
-        <p>Net ’n paar dae later, op 2 Desember 2021, sit ons saam op ons eerste afspraak, en die vonk was daar. Teen 2 Januarie 2022 proe ons saam wyn vir die eerste keer, en van daar af het ons liefde net begin groei.</p>
-        <p>Ons het avonture begin opstapel: Cape Town 10s, skydive saam, uitstappies na Agulhas, en meer herinneringe as wat ons ooit kon tel.</p>
-        <p>Op 7 Mei 2022, by die Robertson-vliegveld, op die runway, vra Philip vir Anelle om sy meisie te wees — ’n oomblik so mooi en uniek soos ons reis self.</p>
-        <p>Sedertdien het ons saam ontdek, saam gelag en saam geleef: wynproe, toere deur ons land en na Italië, musiekkonserte, sportbyeenkomste en selfs ’n paar seer herinneringe soos ’n gebreekte arm en rug — maar altyd hand aan hand, altyd saam.</p>
-        <p>Toe, op 20 September, vra Philip die groot JA-woord, en Anelle se antwoord was ’n vaste, liefdevolle “JA”.</p>
-        <p>Nou kyk ons vorentoe na 13 Maart 2026 — die dag waarop ons “vir altyd” begin. Ons kan nie wag om hierdie nuwe hoofstuk saam met ons familie en vriende te vier nie.</p>
-      </div>
-    </section>
+<section id="upload" aria-label="Foto-oplaai">
+  <div class="container card">
+    <h2>Laai jou foto's op</h2>
+    <p class="note">Deur foto's op te laai, gee jy toestemming dat ons dit in ons trou-galery mag vertoon.</p>
+    <p class="note">Hier sal ons Tally / ander vorm-iframe wees sodra dit opgestel is.</p>
+  </div>
+</section>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    <!-- DAY -->
-    <section id="day">
-      <div class="container card">
-        <h2>Die Dag</h2>
-        <ul>
-          <li>15:30 – Gaste arriveer &amp; voor-drankies (tuin)</li>
-          <li>16:00 – Seremonie by Riebeek Kasteel NGK</li>
-          <li>16:45 – Canapés &amp; foto's</li>
-          <li>18:00 – Ontvangs &amp; toesprake</li>
-          <li>23:30 – Laaste dans</li>
-        </ul>
-      </div>
-    </section>
+<section id="gallery">
+  <div class="container card">
+    <h2>Galery</h2>
+    <p class="note">
+      Hier is ’n paar van ons gunsteling oomblikke saam. Jy kan deur die foto’s blaai direk hier op die blad,
+      of die volle galery in Google Drive oopmaak.
+    </p>
 
-    <div class="divider"></div>
+    <div class="gallery-drive">
+      <iframe
+        title="Ons foto-galery"
+        src="https://drive.google.com/embeddedfolderview?id=1JwMf76iuzimGRaKpLivsTBfDEdDZmz2Z#grid"
+        loading="lazy">
+      </iframe>
+    </div>
 
-    <!-- VENUE -->
-    <section id="venue">
-      <div class="container card">
-        <h2>Venue &amp; Reis</h2>
-        <p><strong>Venue:</strong> Royal Hotel, Riebeek-Kasteel</p>
-        <p>Parkering is op die perseel beskikbaar.</p>
-        <p>Naby akkommodasie sluit in: Riebeek Valley Hotel (beperkte kamers beskikbaar), The Royal Annex en verskeie plaaslike Airbnbs.</p>
-      </div>
-    </section>
+    <p class="note" style="margin-top: 12px;">
+      As die galery nie mooi laai nie,
+      <a href="https://drive.google.com/drive/folders/1JwMf76iuzimGRaKpLivsTBfDEdDZmz2Z?usp=sharing"
+         target="_blank" rel="noopener">
+        klik hier om dit direk in Google Drive oop te maak.
+      </a>
+    </p>
+  </div>
+</section>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    <!-- RSVP -->
-    <section id="rsvp">
-      <div class="container card">
-        <h2>RSVP</h2>
-        <p>Ons vra vriendelik dat jy asseblief voor <strong>21 December 2025</strong> RSVP.</p>
-        <p>Hier sal ons Google-vorm of RSVP-skakel wees sodra dit gereed is.</p>
-      </div>
-    </section>
+<section id="faq">
+  <div class="container card">
+    <h2>Gereelde vrae</h2>
+    <p><strong>Kleredrag:</strong> Streng smart casual.</p>
+    <p><strong>Kinders:</strong> Dit is ’n volwasse fees, tensy anders op jou uitnodiging aangedui.</p>
+    <p><strong>Weer:</strong> Warm middage en koeler aande – bring asseblief ’n ligte baadjie of serp.</p>
+    <p><strong>Kontant kroeg:</strong> Bring ’n paar bokke saam as jy iets anders as die tafelwyn wil geniet.</p>
+  </div>
+</section>
 
-    <div class="divider"></div>
+<footer>
+  © 2026 Philip &amp; Anelle • Met liefde uit Riebeek-Kasteel
+</footer>
 
-    <!-- GIFTS -->
-    <section id="registry">
-      <div class="container card">
-        <h2>Geskenkregister</h2>
-        <p>Julle teenwoordigheid op ons dag is die grootste geskenk. As jy tog graag ’n geskenk wil gee, sal ’n geldjie verwelkom word vir honeymoon-sakgeld:</p>
-        <ul>
-          <li>Skakel na bankbesonderhede vir EFT</li>
-          <li>Skakel na enige ander opsie wat ons later byvoeg</li>
-        </ul>
-      </div>
-    </section>
+<script>
+  // Plaas hier jou regte oplaai-vorm skakel wanneer dit gereed is (vir foto's, nie RSVP nie)
+  const UPLOAD_FORM_URL = 'https://tally.so/r/PLACEHOLDER_FORM_ID';
 
-    <div class="divider"></div>
+  document.addEventListener('DOMContentLoaded', () => {
+    const link = document.getElementById('uploadLink');
+    if (link) {
+      link.href = UPLOAD_FORM_URL;
+      link.textContent = UPLOAD_FORM_URL.replace('https://','');
+    }
+    const qr = document.getElementById('qrimg');
+    if (qr) {
+      const base = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=';
+      qr.src = base + encodeURIComponent(UPLOAD_FORM_URL);
+    }
+  });
+</script>
 
-    <!-- PHOTO UPLOAD (QR) -->
-    <section id="photos">
-      <div class="container card">
-        <h2>Foto's</h2>
-        <p class="note">Skandeer die QR-kode om die oplaai-vorm oop te maak, laai jou gunsteling oomblikke op, en blaai later deur die galery.</p>
-        <div class="grid cols-2" style="margin-top:20px">
-          <div>
-            <h3>Skandeer die QR</h3>
-            <div class="qr-box" style="margin:12px 0 10px">
-              <img id="qrimg" alt="QR-kode na foto-oplaai vorm" width="240" height="240" />
-            </div>
-            <p class="note">As die QR nie wil werk nie, gebruik hierdie skakel: <a id="uploadLink" href="#upload">oplaai-skakel</a></p>
-          </div>
-          <div>
-            <h3>Hoe dit werk</h3>
-            <ol class="note" style="line-height:1.9">
-              <li>Maak die oplaai-vorm oop (QR of skakel).</li>
-              <li>Laai jou foto's op of neem ’n foto met jou foon.</li>
-              <li>Klik stuur. Dis dit!</li>
-            </ol>
-            <p class="note">Wenk: Probeer om vae / duplikaat foto's te vermy. Venue Wi-Fi kan stadig wees, so kleiner oplaai is beter.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- (Placeholder upload section if you embed Tally/Google Form later) -->
-    <section id="upload" aria-label="Foto-oplaai">
-      <div class="container card">
-        <h2>Laai jou foto's op</h2>
-        <p class="note">Deur foto's op te laai, gee jy toestemming dat ons dit in ons trou-galery mag vertoon.</p>
-        <p class="note">Hier sal ons Tally / ander vorm-iframe wees sodra dit opgestel is.</p>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- CUSTOM FILM-STRIP GALLERY -->
-    <section id="gallery">
-      <div class="container card">
-        <h2>Galery</h2>
-        <p class="note">’n Paar van ons gunsteling oomblikke – sonder lêername, in ’n filmstrook-raam soos op die inspirasiefoto.</p>
-
-        <div class="film-gallery">
-          <div class="film-frame">
-            <img src="_MG_6273.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6283.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6305.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6383.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6407.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6426.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6483.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6505.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6524.JPG" alt="">
-          </div>
-          <div class="film-frame">
-            <img src="_MG_6560.JPG" alt="">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <div class="container card">
-        <h2>Gereelde vrae</h2>
-        <p><strong>Kleredrag:</strong> Streng smart casual.</p>
-        <p><strong>Kinders:</strong> Dit is ’n volwasse fees, tensy anders op jou uitnodiging aangedui.</p>
-        <p><strong>Weer:</strong> Warm middage en koeler aande – bring asseblief ’n ligte baadjie of serp.</p>
-      </div>
-    </section>
-
-    <footer>
-      <div>© 2026 Philip &amp; Anelle • Met liefde uit Riebeek-Kasteel</div>
-    </footer>
-
-  </div><!-- /page-shell -->
-
-  <script>
-    // Plaas hier jou regte oplaai-vorm skakel wanneer dit gereed is
-    const UPLOAD_FORM_URL = 'https://tally.so/r/PLACEHOLDER_FORM_ID';
-    document.addEventListener('DOMContentLoaded', () => {
-      const link = document.getElementById('uploadLink');
-      if (link) {
-        link.href = UPLOAD_FORM_URL;
-        link.textContent = UPLOAD_FORM_URL.replace('https://','');
-      }
-      const qr = document.getElementById('qrimg');
-      if (qr) {
-        const base = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=';
-        qr.src = base + encodeURIComponent(UPLOAD_FORM_URL);
-      }
-    });
-  </script>
 </body>
 </html>
