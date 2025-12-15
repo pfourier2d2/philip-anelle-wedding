@@ -101,43 +101,31 @@
       text-transform: uppercase;
     }
 
-    /* HAMBURGER BUTTON */
+    /* HAMBURGER BUTTON (simple 3 lines – no X) */
     .nav-toggle {
       display: none;            /* hidden on desktop */
-      width: 38px;
-      height: 32px;
-      border-radius: 999px;
+      width: 44px;
+      height: 36px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       background: #fff;
       box-shadow: var(--shadow);
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      padding: 0;
+      padding: 6px;
     }
 
     .nav-toggle span {
       display: block;
-      width: 18px;
+      width: 22px;
       height: 2px;
       background: var(--ink);
-      border-radius: 999px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      border-radius: 2px;
     }
 
     .nav-toggle span + span {
-      margin-top: 4px;
-    }
-
-    /* X state */
-    .nav-toggle.open span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-    .nav-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav-toggle.open span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
+      margin-top: 5px;
     }
 
     .menu {
@@ -263,7 +251,7 @@
       font-size: 0.9rem;
     }
 
-    /* ------------ MOBILE LAYOUT & HAMBURGER ------------ */
+    /* ------------ MOBILE LAYOUT & MENU OPEN ------------ */
     @media (max-width: 768px) {
       .nav-inner {
         flex-wrap: wrap;
@@ -281,20 +269,22 @@
       }
 
       .nav-toggle {
-        display: inline-flex;   /* show hamburger on mobile */
+        display: inline-flex;   /* show burger on mobile */
       }
 
       .menu {
         width: 100%;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-        margin-top: 6px;
+        gap: 10px;
+        margin-top: 10px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
         display: none;          /* hidden by default */
       }
 
       .menu.open {
-        display: flex;          /* show when JS adds .open */
+        display: flex;          /* show when open */
       }
 
       .hero {
@@ -426,7 +416,7 @@
     <ul>
       <li>15:30 – Gaste arriveer</li>
       <li>16:00 – Seremonie by Riebeek Kasteel NGK</li>
-      <li>16:45 – Happies, voor-drankies &amp foto's</li>
+      <li>16:45 – Happies, voor-drankies &amp; foto's</li>
       <li>18:45 – Onthaal begin</li>
       <li>23:00 – Laaste dans</li>
     </ul>
@@ -488,7 +478,6 @@
     </p>
   </div>
 </section>
-
 
 <div class="divider"></div>
 
@@ -591,25 +580,21 @@
       qr.src = base + encodeURIComponent(UPLOAD_FORM_URL);
     }
 
-    // HAMBURGER MENU JS
+    // SIMPLE MOBILE MENU (3 lines stays 3 lines)
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.querySelector('.menu');
 
     if (toggle && menu) {
       toggle.addEventListener('click', () => {
-        const isOpen = toggle.classList.toggle('open');
-        menu.classList.toggle('open', isOpen);
+        const isOpen = menu.classList.toggle('open');
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
 
       // Close menu when a link is clicked (on mobile)
       menu.querySelectorAll('a').forEach(linkEl => {
         linkEl.addEventListener('click', () => {
-          if (menu.classList.contains('open')) {
-            menu.classList.remove('open');
-            toggle.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
         });
       });
     }
@@ -618,5 +603,3 @@
 
 </body>
 </html>
-
-
